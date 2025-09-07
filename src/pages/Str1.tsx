@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../component/Header";
 import SocialPanel from "../component/SocialPanel";
 import PostPanel from "../component/PostPanel";
