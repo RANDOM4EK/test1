@@ -29,7 +29,7 @@ const panel: Dashboard[] = [
   },
 ];
 
-export const inMemoryPostRepository: DashboardRepository = {
+export const InMemoryDashboardRepository: DashboardRepository = {
   findAll(): Dashboard[] {
     return panel;
   },

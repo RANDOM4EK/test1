@@ -2,7 +2,7 @@ import type { Dashboard } from "../domain/Dashboard";
 import type { DashboardRepository } from "../domain/DashboardRepository";
 
 // Это наш Use Case (сценарий использования)
-export const getFeedDashboard = (postRepository: DashboardRepository): Dashboard[] => {
+export const getFeedDashboard = (dashboardRepository: DashboardRepository): Dashboard[] => {
 
-  return postRepository.findAll();
+  return dashboardRepository.findAll();
 };
