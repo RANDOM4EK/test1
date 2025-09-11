@@ -1,15 +1,16 @@
 import type { Dashboard } from "../domain/Dashboard";
 import type { DashboardRepository } from "../domain/DashboardRepository";
 
-import profileImage from '../../image/profileIcon.png'
-import findFrendsImage from '../../image/findFrendsIcon.png'
-import analyticsImage from '../../image/activityIconHeader.png'
-import settingsImage from '../../image/settingsIcon.png'
-import securityImage from '../../image/securityDataIcon.png'
-import logOutImage from '../../image/logOutIcon.png'
+import profileImage from '../../image/profileIcon.png';
+import findFrendsImage from '../../image/findFrendsIcon.png';
+import analyticsImage from '../../image/activityIconHeader.png';
+import settingsImage from '../../image/settingsIcon.png';
+import securityImage from '../../image/securityDataIcon.png';
+import logOutImage from '../../image/logOutIcon.png';
 
-const panel: Dashboard[] = [
-  {
+// 👇 Привязываем Dashboard к конкретному userId
+const panel: { [userId: string]: Dashboard } = {
+  "user-steve": {
     explorePanel: {
       profile: "profile",
       profileImageUrl: profileImage,
@@ -27,10 +28,11 @@ const panel: Dashboard[] = [
       logOutImageUrl: logOutImage,
     },
   },
-];
+  // Можно добавить других пользователей по аналогии
+};
 
 export const InMemoryDashboardRepository: DashboardRepository = {
-  findAll(): Dashboard[] {
+  findAll(): { [userId: string]: Dashboard } {
     return panel;
   },
 };

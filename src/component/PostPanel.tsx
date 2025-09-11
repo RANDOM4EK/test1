@@ -38,7 +38,7 @@ function PostPanel({ posts }: PostPanelProps) {
         </Flex>
 
         {/* А здесь начинается магия: рендерим посты из props */}
-        {posts.map((post) => (
+        {Object.values(posts).map((post) => (
           <Flex
             key={post.id} // Ключ обязателен для списков в React
             width="795px"

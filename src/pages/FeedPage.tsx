@@ -11,6 +11,11 @@ import { getCurrentUser } from "../application/getCurrentUser";
 import { inMemoryUserRepository } from "../infrastructure/InMemoryUserRepository";
 import { getFeedDashboard } from "../application/getFeedDashboard";
 import { InMemoryDashboardRepository } from "../infrastructure/InMemoryDashboardRepository";
+import { getFeedHeader } from "../application/getFeedHeader";
+import { InMemoryHeaderRepository } from '../infrastructure/InMemoryHeaderRepository'
+import { getFeedBuzzBoard } from "../application/getFeedBuzzBoard";
+import { InMemoryBuzzBoardRepository } from "../infrastructure/InMemmoryBuzzBoardRepository";
+
 
 function FeedPage() {
   // 2. "Собираем" зависимости и получаем данные
@@ -18,14 +23,16 @@ function FeedPage() {
   const posts = getFeedPosts(inMemoryPostRepository);
   const currentUser = getCurrentUser(inMemoryUserRepository)
   const dashboard = getFeedDashboard(InMemoryDashboardRepository)
+  const headerelem = getFeedHeader(InMemoryHeaderRepository)
+  const buzzElem = getFeedBuzzBoard(InMemoryBuzzBoardRepository)
 
   return (
     <Flex flexDirection="column">
-      <Header />
+      <Header headerElem={headerelem}/>
       <Flex>
         <UserPanel user={currentUser} dashboard={dashboard} />
         <PostPanel posts={posts} />
-        <SocialPanel />
+        <SocialPanel buzzElem={buzzElem}/>
       </Flex>
     </Flex>
   );
