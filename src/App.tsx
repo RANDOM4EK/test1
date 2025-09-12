@@ -1,15 +1,22 @@
-import './App.css'
+import './App.css';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import FeedPage from './pages/FeedPage';
 
-import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
-
   return (
     <ChakraProvider>
-      <FeedPage></FeedPage>
+      <Router>
+        <Routes>
+          <Route path="/" element={<FeedPage />} />
+          <Route path="/profile/:id" element={'#'} />
+          <Route path="*" element={'#'} />
+        </Routes>
+      </Router>
     </ChakraProvider>
-  )
+  );
 }
 
 export default App;

@@ -1,13 +1,11 @@
 import type { Post } from "../domain/Post";
 import type { PostRepository } from "../domain/PostRepository";
 
-
 import tonyAvatar from "../../image/Avatar.png";
 import paulAvatar from "../../image/Avatar4.png";
 import paulImagePost from "../../image/paysage.png";
 
-
-const posts: Post[] = [
+let posts: Post[] = [
   {
     id: "post-1",
     author: {
@@ -30,14 +28,15 @@ const posts: Post[] = [
       bio: "Smallest creature in this beautiful universe | Flying in colo....",
     },
     imageUrl: paulImagePost,
-    text: ` Exploring the amazing nature with my loved daughter and wife.
-            These kind of visuals can soothen your mind, no matter what is
-            your problem and it makes you to forget all your pains.`,
+    text: `Exploring the amazing nature with my loved daughter and wife. These kind of visuals can soothen your mind.`,
   },
 ];
 
 export const inMemoryPostRepository: PostRepository = {
   findAll(): Post[] {
     return posts;
+  },
+  deleteById(id: string): void {
+    posts = posts.filter(post => post.id !== id);
   },
 };
